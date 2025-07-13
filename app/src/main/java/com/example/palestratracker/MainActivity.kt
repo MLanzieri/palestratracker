@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
     private val allenamenti = mutableListOf<Allenamento>()
 
     // Componenti UI
+    private lateinit var textViewFraseMotivazionale: TextView
+    private lateinit var buttonNuovaFrase: Button
     private lateinit var editTextEsercizio: EditText
     private lateinit var editTextSerie: EditText
     private lateinit var editTextRipetizioni: EditText
@@ -21,11 +23,31 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: ArrayAdapter<String>
     private val listaStringhe = mutableListOf<String>()
 
+    // Array di frasi motivazionali
+    private val frasiMotivazionali = arrayOf(
+        "Il dolore che senti oggi è la forza che sentirai domani",
+        "Non smettere quando sei stanco, smetti quando hai finito",
+        "Il tuo corpo può farcela. È la tua mente che devi convincere",
+        "Ogni esperto è stato una volta un principiante",
+        "Non aspettare di essere motivato, sii disciplinato",
+        "La costanza batte il talento quando il talento non è costante",
+        "Fai oggi quello che gli altri non faranno",
+        "Non si tratta di essere perfetti, si tratta di essere migliori di ieri",
+        "La palestra è dove le scuse muoiono e i risultati nascono",
+        "Il sudore è grasso che piange",
+        "Non puoi comprare la forma fisica, devi guadagnartela",
+        "Ogni allenamento è un passo verso il tuo obiettivo",
+        "La forza viene dalla volontà, non dalla capacità fisica",
+        "Chi si allena trova soluzioni, non scuse"
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         // Collego i componenti
+        textViewFraseMotivazionale = findViewById(R.id.textViewFraseMotivazionale)
+        buttonNuovaFrase = findViewById(R.id.buttonNuovaFrase)
         editTextEsercizio = findViewById(R.id.editTextEsercizio)
         editTextSerie = findViewById(R.id.editTextSerie)
         editTextRipetizioni = findViewById(R.id.editTextRipetizioni)
@@ -37,7 +59,15 @@ class MainActivity : AppCompatActivity() {
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listaStringhe)
         listViewAllenamenti.adapter = adapter
 
-        // Listener per il bottone
+        // Mostro una frase motivazionale all'avvio
+        mostraFraseMotivazionale()
+
+        // Listener per il bottone nuova frase
+        buttonNuovaFrase.setOnClickListener {
+            mostraFraseMotivazionale()
+        }
+
+        // Listener per il bottone aggiungi allenamento
         buttonAggiungi.setOnClickListener {
             aggiungiAllenamento()
         }
@@ -47,6 +77,14 @@ class MainActivity : AppCompatActivity() {
             eliminaAllenamento(position)
             true
         }
+    }
+
+    private fun mostraFraseMotivazionale() {
+        val random = Random()
+        val indiceRandomico = random.nextInt(frasiMotivazionali.size)
+        val fraseScelta = frasiMotivazionali[indiceRandomico]
+        textViewFraseMotivazionale.text = fraseScelta
+        Toast.makeText(this, "Nuova motivazione! 💪", Toast.LENGTH_SHORT).show()
     }
 
     private fun aggiungiAllenamento() {
@@ -114,7 +152,7 @@ class MainActivity : AppCompatActivity() {
         editTextRipetizioni.text.clear()
         editTextPeso.text.clear()
 
-        Toast.makeText(this, "Allenamento aggiunto!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Allenamento aggiunto! Forza! 💪", Toast.LENGTH_SHORT).show()
     }
 
     private fun eliminaAllenamento(position: Int) {

@@ -5,97 +5,140 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Titolo dell'app -->
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tracker Palestra"
+        android:text=" GymTracker"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginBottom="20dp" />
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:textColor="#4CAF50" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Sezione Frase Motivazionale -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome Esercizio:"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
+        android:orientation="vertical"
+        android:background="#E8F5E8"
+        android:padding="16dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔥 MOTIVAZIONE DEL GIORNO"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#FF6F00"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textViewFraseMotivazionale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Il dolore che senti oggi è la forza che sentirai domani"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:textColor="#424242"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/buttonNuovaFrase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuova Motivazione"
+            android:layout_gravity="center"
+            android:textSize="12sp"
+            android:backgroundTint="#FF9800"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <!-- Sezione Inserimento Allenamento -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📝 AGGIUNGI ALLENAMENTO"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"
+        android:textColor="#4CAF50" />
 
     <EditText
         android:id="@+id/editTextEsercizio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Es: Panca piana"
-        android:layout_marginBottom="16dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Numero Serie:"
-        android:textSize="16sp"
+        android:hint="Nome esercizio (es. Panca piana)"
         android:layout_marginBottom="8dp" />
 
-    <EditText
-        android:id="@+id/editTextSerie"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Es: 3"
-        android:inputType="number"
-        android:layout_marginBottom="16dp" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ripetizioni per Serie:"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
+        <EditText
+            android:id="@+id/editTextSerie"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Serie"
+            android:inputType="number"
+            android:layout_marginEnd="4dp" />
 
-    <EditText
-        android:id="@+id/editTextRipetizioni"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Es: 10"
-        android:inputType="number"
-        android:layout_marginBottom="16dp" />
+        <EditText
+            android:id="@+id/editTextRipetizioni"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Ripetizioni"
+            android:inputType="number"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Peso (kg):"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
+        <EditText
+            android:id="@+id/editTextPeso"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Peso (kg)"
+            android:inputType="numberDecimal"
+            android:layout_marginStart="4dp" />
 
-    <EditText
-        android:id="@+id/editTextPeso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Es: 50.5"
-        android:inputType="numberDecimal"
-        android:layout_marginBottom="20dp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/buttonAggiungi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aggiungi Allenamento"
-        android:textSize="16sp"
-        android:layout_marginBottom="20dp" />
+        android:text="➕ AGGIUNGI ALLENAMENTO"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 
+    <!-- Lista Allenamenti -->
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="I tuoi allenamenti:"
+        android:text="📊 I TUOI ALLENAMENTI"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="12dp"
+        android:textColor="#4CAF50" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="(Tieni premuto per eliminare)"
+        android:text="Tieni premuto su un allenamento per eliminarlo"
         android:textSize="12sp"
         android:textColor="#666666"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="8dp"
+        android:textStyle="italic" />
 
     <ListView
         android:id="@+id/listViewAllenamenti"
